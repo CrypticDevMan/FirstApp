@@ -6,9 +6,9 @@ using namespace std;
 int main() 
 {
 	// introduce the game
-	constexpr int WORLD_LENGTH = 5;
+	constexpr int WORD_LENGTH = 5;
 	cout << "Welcome to Bulls and Cows, a fun word game.\n";
-	cout << "Can you guess the " << WORLD_LENGTH << " letter isogram I'm thinking of.\n";
+	cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of.\n";
 	cout << endl;
 
 	// get a guess from the player
