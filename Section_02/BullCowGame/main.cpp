@@ -1,8 +1,9 @@
+#include <iostream>
 
+using namespace std;
 
-
-
-
-int main() {
+int main() 
+{
+	cout << "Welcome to Bulls and Cows\n";
 	return 0;
 }
