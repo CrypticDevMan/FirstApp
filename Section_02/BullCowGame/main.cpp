@@ -4,6 +4,8 @@ using namespace std;
 
 int main() 
 {
-	cout << "Welcome to Bulls and Cows\n";
+	constexpr int WORLD_LENGTH = 5;
+	cout << "Welcome to Bulls and Cows, a fun word game.\n";
+	cout << "Can you guess the " << WORLD_LENGTH << " letter isogram I'm thinking of.\n";
 	return 0;
 }
