@@ -4,15 +4,14 @@
 using namespace std;
 
 void PrintIntro();
-string GetGuessAndPrintBack();
+void PlayGame();
+string GetGuess();
 
-
-
+// the entry point for our application
 int main() 
 {
 	PrintIntro();
-	GetGuessAndPrintBack();
-	cout << endl;
+	PlayGame();
 	return 0;
 }
 
@@ -26,14 +25,23 @@ void PrintIntro()
 	return;
 }
 
+// plays the game.
+void PlayGame()
+{
+	constexpr int guessAllowed = 5;
+	for (int i = 0; i < guessAllowed; i++)
+	{
+		string Guess = GetGuess();
+		cout << "Your guess was: " << Guess << endl;
+		cout << endl;
+	}
+}
+
 // get a guess from the player
-string GetGuessAndPrintBack()
+string GetGuess()
 {
 	string Guess = "";
 	cout << "Please enter your guess for the isogram: ";
 	getline(cin, Guess);
-
-	// repeat the guess back to them
-	cout << "Your guess was: " << Guess << endl;
 	return Guess;
 }
