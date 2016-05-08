@@ -1,17 +1,21 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 void PrintIntro();
 void PlayGame();
-string GetGuess();
+std::string GetGuess();
+bool AskToPlayAgain();
+
 
 // the entry point for our application
 int main() 
 {
 	PrintIntro();
-	PlayGame();
+	bool bPlayAgain = false;
+	do {
+		PlayGame();
+		bPlayAgain = AskToPlayAgain();
+	} while (bPlayAgain == true);
 	return 0;
 }
 
@@ -19,9 +23,9 @@ int main()
 void PrintIntro()
 {
 	constexpr int WORD_LENGTH = 5;
-	cout << "Welcome to Bulls and Cows, a fun word game.\n";
-	cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of.\n";
-	cout << endl;
+	std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
+	std::cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of.\n";
+	std::cout << std::endl;
 	return;
 }
 
@@ -31,17 +35,33 @@ void PlayGame()
 	constexpr int guessAllowed = 5;
 	for (int i = 0; i < guessAllowed; i++)
 	{
-		string Guess = GetGuess();
-		cout << "Your guess was: " << Guess << endl;
-		cout << endl;
+		std::string Guess = GetGuess();
+		std::cout << "Your guess was: " << Guess << std::endl;
+		std::cout << std::endl;
 	}
 }
 
 // get a guess from the player
-string GetGuess()
+std::string GetGuess()
 {
-	string Guess = "";
-	cout << "Please enter your guess for the isogram: ";
-	getline(cin, Guess);
+	std::string Guess = "";
+	std::cout << "Please enter your guess for the isogram: ";
+	getline(std::cin, Guess);
 	return Guess;
+}
+
+bool AskToPlayAgain()
+{
+	std::cout << "Do you want to play again? (y/n)";
+	std::string Response = "";
+	getline(std::cin, Response);
+	if (Response[0] == 'y' || Response[0] == 'Y')
+	{
+		std::cout << "We are now replying the game.\n";
+		return true;
+	} else {
+		std::cout << "We are ending the game.\n";
+		return false;
+	}
+	std::cout << std::endl;
 }
