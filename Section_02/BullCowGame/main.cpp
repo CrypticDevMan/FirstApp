@@ -1,19 +1,28 @@
+/* This is the console executable, that makes use of the BullCow class
+This acts as the view in a MVC pattern, and is responsible for all
+user interaction. For game logic see the FBullCowGame class.
+*/
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
 
+using FText = std::string;
+using int32 = int;
+
 void PrintIntro();
 void PlayGame();
-std::string GetGuess();
+FText GetGuess();
 bool AskToPlayAgain();
 FBullCowGame BCGame;
+FText ignoreMe = "R74475";
 
 // the entry point for our application
-int main() 
+int main()
 {
 	PrintIntro();
 	bool bPlayAgain = false;
-	do {
+	do
+	{
 		PlayGame();
 		bPlayAgain = AskToPlayAgain();
 	} while (bPlayAgain == true);
@@ -23,7 +32,7 @@ int main()
 // introduce the game
 void PrintIntro()
 {
-	constexpr int WORD_LENGTH = 5;
+	constexpr int32 WORD_LENGTH = 5;
 	std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
 	std::cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of.\n";
 	std::cout << std::endl;
@@ -34,25 +43,28 @@ void PrintIntro()
 void PlayGame()
 {
 	BCGame.Reset();
-	int MaxTries = BCGame.GetMaxTries();
+	int32 MaxTries = BCGame.GetMaxTries();
 	// TODO change from FOR loop to WHILE loop
-	for (int i = 0; i < MaxTries; i++)
+	for (int32 i = 0; i < MaxTries; i++)
 	{
-		std::string Guess = GetGuess(); // TODO make loop check for valid guess's
+		FText Guess = GetGuess(); // TODO make loop check for valid guess's
 
-		// submit valid guess to the game
+								  // submit valid guess to the game, and receive counts
+		FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
 		// print number of bulls and cows.
+		std::cout << "Bulls = " << BullCowCount.Bulls;
+		std::cout << ". Cows = " << BullCowCount.Cows << std::endl;
 
-		std::cout << "Your guess was: " << Guess << std::endl;
+		//std::cout << "Your guess was: " << Guess << std::endl;
 		std::cout << std::endl;
 	}
 }
 
 // get a guess from the player
-std::string GetGuess()
+FText GetGuess()
 {
-	int currentTry = BCGame.GetCurrentTry();
-	std::string Guess = "";
+	int32 currentTry = BCGame.GetCurrentTry();
+	FText Guess = "";
 	std::cout << "Try " << currentTry << ". Please enter your guess for the isogram: ";
 	getline(std::cin, Guess);
 	return Guess;
@@ -61,13 +73,15 @@ std::string GetGuess()
 bool AskToPlayAgain()
 {
 	std::cout << "Do you want to play again? (y/n)";
-	std::string Response = "";
+	FText Response = "";
 	getline(std::cin, Response);
 	if (Response[0] == 'y' || Response[0] == 'Y')
 	{
 		std::cout << "We are now replying the game.\n";
 		return true;
-	} else {
+	}
+	else
+	{
 		std::cout << "We are ending the game.\n";
 		return false;
 	}

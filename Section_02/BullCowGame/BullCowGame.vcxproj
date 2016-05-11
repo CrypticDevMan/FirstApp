@@ -18,8 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FBullCowGame.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FBullCowGame.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5F7ACBB1-6D17-4F06-8A48-BA8FF6097177}</ProjectGuid>
+    <ProjectGuid>{A3E23316-2EA2-45BA-AEF5-4E164F9A7FD4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>BullCowGame</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -141,13 +148,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="FBullCowGame.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="FBullCowGame.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
