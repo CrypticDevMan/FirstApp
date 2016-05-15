@@ -15,7 +15,7 @@ FText GetValidGuess();
 bool AskToPlayAgain();
 FBullCowGame BCGame;
 void PrintGameSummary();
-//FText ignoreMe = "R74475";
+FText ignoreMe = "R74475";
 
 // the entry point for our application
 int main()
